@@ -4,22 +4,22 @@
 (add-hook 'global-mode-hook 'global-whitespace-mode -1)
 (add-hook 'global-mode-hook 'prettify-symbols-mode)
 
-(add-hook 'prog-mode-hook 'highlight-numbers-mode)
-(add-hook 'prog-mode-hook 'highlight-operators-mode)
-(add-hook 'prog-mode-hook 'highlight-function-calls-mode)
+;; (add-hook 'prog-mode-hook 'highlight-numbers-mode)
+;; (add-hook 'prog-mode-hook 'highlight-operators-mode)
+;; (add-hook 'prog-mode-hook 'highlight-function-calls-mode)
 
-(add-hook 'prog-mode-hook 'eldoc-mode)
+;; (add-hook 'prog-mode-hook 'eldoc-mode)
 
-(add-hook 'prog-mode-hook 'company-mode)
-(provide 'company)
+;; (add-hook 'prog-mode-hook 'company-mode)
+;; (provide 'company)
 
-(add-hook 'prog-mode-hook 'flymake-mode-off)
+;; (add-hook 'prog-mode-hook 'flymake-mode-off)
 
 
 ;; ===================================================================
 ;;c eldoc hooks
-;;(Autoload 'tal-mode "tal-mode" "A major mode for editing TAL files." t nil)
-;;(setq c-eldoc-includes "`pkg-config gtk+-2.0 --cflags` -I./ -I../ ")
+;; (Autoload 'tal-mode "tal-mode" "A major mode for editing TAL files." t nil)
+;; (setq c-eldoc-includes "`pkg-config gtk+-2.0 --cflags` -I./ -I../ ")
 ;;(load "c-eldoc")
 
 (add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
@@ -33,34 +33,34 @@
 
 ;; ===================================================================
 ;;js2 indent styles
-;;(setq js2-bounce-indent-p t)
+(setq js2-bounce-indent-p t)
 
 
 ;;rjsx-mode configuration
 ;;js rjsx-mode + ac-js2-company for js only
-;; (add-hook 'js2-mode-hook (company-mode -1))
-;; ;;(add-hook 'js2-mode-hook 'auto-complete-mode)
-;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook (company-mode -1))
+;;(add-hook 'js2-mode-hook 'auto-complete-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 
 (add-to-list 'auto-mode-alist '("\\.js?\\'" . rjsx-mode))
 
-;; (flycheck-define-checker jsxhint-checker
-;;   "A JSX syntax and style checker based on JSXHint."
+ (flycheck-define-checker jsxhint-checker
+   "A JSX syntax and style checker based on JSXHint."
 
-;;   :command ("jsxhint" source)
-;;   :error-patterns
-;;   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-;;   :modes (rjsx-mode))
+   :command ("jsxhint" source)
+   :error-patterns
+   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
+   :modes (rjsx-mode))
 
-;; (use-package rjsx-mode
-;;   :ensure t
-;;   :after flycheck
-;;   :config
-;;   (add-hook 'rjsx-mode-hook
-;;             #'(lambda ()
-;;                 (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-;;                 (flycheck-mode t))))
+ (use-package rjsx-mode
+   :ensure t
+   :after flycheck
+   :config
+   (add-hook 'rjsx-mode-hook
+             #'(lambda ()
+                 (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+                 (flycheck-mode t))))
 
 
 ;; ===================================================================
@@ -185,8 +185,8 @@
 
 
 
-;(eval-after-load 'flycheck
-;  '(flycheck-add-mode 'html-tidy 'web-mode))
+(eval-after-load 'flycheck
+ '(flycheck-add-mode 'html-tidy 'web-mode))
 
 
 
@@ -286,7 +286,7 @@
                              (dired-buffer-face-mode)
                              (local-set-key (kbd "z") 'dired-hide-dotfiles-mode)))
 
-;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 (defun dired-buffer-face-mode ()
   "custom faces for dired"
@@ -322,8 +322,7 @@
 (add-hook 'ibuffer-sidebar-mode-hook
           ( lambda ()
             (face-remap-add-relative 'default '(:height 0.8))
-            (local-unset-key (kbd "C-k")))
-          (all-the-icons-ibuffer-mode))
+            (local-unset-key (kbd "C-k"))))
 
 
 ;;toggle both dired, ibuffer sidebars at the same time
@@ -341,10 +340,6 @@
 
 ;; ===================================================================
 ;;flymake for elisp
-(add-hook 'emacs-lisp-mode-hook 'flymake-mode)
-(add-hook 'emacs-lisp-mode-hook (flycheck-mode -1))
-;;(add-hook 'emacs-lisp-mode-hook (smartparens-strict-mode -1))
-
 
 ;; ===================================================================
 ;; tab widths
@@ -417,9 +412,9 @@
 
 
 ;; ===================================================================
-(require 'ibuffer)
-(add-hook 'ibuffer-mode-hook ( lambda ()
-			       (all-the-icons-ibuffer-mode)))
+;; (require 'ibuffer)
+;; (add-hook 'ibuffer-mode-hook ( lambda ()
+;; 			       (all-the-icons-ibuffer-mode)))
 
 
 ;; ===================================================================
@@ -439,15 +434,18 @@
 ;; ===================================================================
 ;;org blogging
 ;; https://lists.gnu.org/archive/html/emacs-orgmode/2013-10/msg00543.html
-(defun org-md-publish-to-md (plist filename org-export-publishing-directory)
-  "Publish an org file to Markdown.
+;; (defun org-md-publish-to-md (plist filename org-export-publishing-directory)
+;;   "Publish an org file to Markdown.
 
-FILENAME is the filename of the Org file to be published.  PLIST
-is the property list for the given project.  PUB-DIR is the
-publishing directory.
+;; FILENAME is the filename of the Org file to be published.  PLIST
+;; is the property list for the given project.  PUB-DIR is the
+;; publishing directory.
 
-Return output file name."
-  (org-publish-org-to 'md filename ".markdown" plist org-export-publishing-directory))
+;; Return output file name."
+;;   (org-publish-org-to 'org-jekyll-md-export-as-md filename ".markdown" plist org-export-publishing-directory))
+
+;; ==replaced with org-jekyll-md-publish-to-md
+
 
 ;;org blogging https://orgmode.org/worg/org-tutorials/org-jekyll.html
 (setq org-publish-project-alist
@@ -469,23 +467,45 @@ Return output file name."
 	 :base-directory "/home/dks/Development/Blog/org"
 	 :base-extension "org"
 
-         ;; Path to your Jekyll project.
-         :publishing-directory "/home/dks/Development/Blog/_posts"
-         :publishing-function org-md-publish-to-md
-         :headline-levels 4
-         ;;:md-extension "markdown"
-         ;;:body-only t ;; Only export section between <body> </body>
+	 ;; Path to your Jekyll project.
+	 :publishing-directory "/home/dks/Development/Blog/_posts"
+	 :publishing-function org-jekyll-md-publish-to-md
+	 :headline-levels 4
+	 ;;:md-extension "markdown"
+	 ;;:body-only t ;; Only export section between <body> </body>
 	 )
+
+	("org-portfolio-export"
+	 :base-directory "/home/dks/Development/Blog/org_portfolio"
+	 :base-extension "org"
+	 
+	 ;; Path to your Jekyll project.
+	 :publishing-directory "/home/dks/Development/Blog/projects"
+	 :publishing-function org-jekyll-md-publish-to-md
+	 :headline-levels 4
+	 ;;:md-extension "markdown"
+	 ;;:body-only t ;; Only export section between <body> </body>
+	 )
+
+	("org-portfolio-static-export"
+	 :base-directory "/home/dks/Development/Blog/org_portfolio"
+	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
+	 :publishing-directory "/home/dks/Development/Blog/public/images"
+	 ;;:recursive t
+	 :publishing-function org-publish-attachment)
 	
 	
 	("org-blog-static-export"
 	 :base-directory "/home/dks/Development/Blog/org"
 	 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-	 :publishing-directory "/home/dks/Development/Blog/assets"
-	 :recursive t
+	 :publishing-directory "/home/dks/Development/Blog/"
+	 ;;:recursive t
 	 :publishing-function org-publish-attachment)
 
 	("blog-export" :components ("org-blog-export" "org-blog-static-export"))
+
+	("portfolio-export" :component ("org-portfolio-export" "org-portfolio-static-export"))
+	
 	))
 
 

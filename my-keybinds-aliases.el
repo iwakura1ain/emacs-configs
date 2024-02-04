@@ -76,6 +76,12 @@ Called via the `after-load-functions' special hook."
   :bind ("C-M-n" . 'ein:worksheet-insert-cell-below)
   )
 
+(use-package shell
+  :ensure nil
+  :bind ("C-S-i" . 'comint-previous-input)
+  :bind ("C-S-k" . 'comint-next-input)
+  )
+
 
 
 
@@ -219,6 +225,7 @@ Called via the `after-load-functions' special hook."
 (defalias 'ein-del 'ein:worksheet-delete-cell)
 (defalias 'ein-hs 'ein:worksheet-toggle-output)
 (defalias 'ein-rn 'ein:notebook-rename-command-km)
+(defalias 'ein-toggle 'ein:worksheet-toggle-cell-type)
 
 ;;===================================== FUNCTIONS =================================================
 
